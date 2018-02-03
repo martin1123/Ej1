@@ -60,6 +60,15 @@ public class Inscripcion {
 	public void setIdFormaDePago(Long idFormaDePago) {
 		this.idFormaDePago = idFormaDePago;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Nombre: " + nombre + ", Telefono: " + telefono + ", Curso: " + idCurso + ", Forma de pago: "
+				+ idFormaDePago;
+	}
 	
 	
 

@@ -23,14 +23,14 @@ public class Application {
 			System.out.println("Ingrese numero de un curso: ");
 			
 			for(Curso curso : f.getCursos()){
-				System.out.printf("%ld-%s    Precio:%0.2f\n",curso.getId(),curso.getDescripcion(),curso.getPrecio());
+				System.out.printf("%d-%s\tPrecio: $%.2f\n",curso.getId(),curso.getDescripcion(),curso.getPrecio());
 			}
 			
 			insc.setIdCurso(scan.nextLong());
 			
 			System.out.println("Ingrese numero de forma de pago: ");
 			for(FormaDePago fp : f.getFormasDePago()){
-				System.out.printf("%ld-%s    Recargo:%0.2f\n",fp.getId(),fp.getDescripcion(),fp.getRecargo());
+				System.out.printf("%d-%s\tRecargo: $%.2f\n",fp.getId(),fp.getDescripcion(),fp.getRecargo());
 			}
 			
 			insc.setIdFormaDePago(scan.nextLong());
@@ -44,7 +44,7 @@ public class Application {
 		
 		Long iDinsc = f.inscribir(insc);
 		System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.printf("Inscripcion confirmada. El ID de incripcion es %ld\n",iDinsc);
+		System.out.printf("Inscripcion confirmada. El ID de incripcion es %d\n",iDinsc);
 	}
 
 }

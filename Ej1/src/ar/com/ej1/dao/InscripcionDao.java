@@ -13,7 +13,7 @@ public class InscripcionDao {
 	public Long generarInscripcion(Inscripcion insc){
 		Long id = 0l;
 		
-		String s1 = "INSERT INTO INSCRIPCION(NOMBRE,TELEFONO,ID_CURSO,ID_FORMA_DE_PAGO) VALUES (?,?,?,?)";
+		String s1 = "INSERT INTO INSCRIPCION(ID,NOMBRE,TELEFONO,ID_CURSO,ID_FORMA_DE_PAGO) VALUES (?,?,?,?,?)";
 		String s2 = "SELECT MAX(ID) FROM INSCRIPCION";
 
 		try {
@@ -21,10 +21,11 @@ public class InscripcionDao {
 			PreparedStatement pstm1 = con.prepareStatement(s1);
 			PreparedStatement pstm2 = con.prepareStatement(s2);
 			
-			pstm1.setString(0, insc.getNombre());
-			pstm1.setString(1, insc.getTelefono());
-			pstm1.setLong(2, insc.getIdCurso());
-			pstm1.setLong(3, insc.getIdFormaDePago());
+			pstm1.setInt(1, 1);
+			pstm1.setString(2, insc.getNombre());
+			pstm1.setString(3, insc.getTelefono());
+			pstm1.setLong(4, insc.getIdCurso());
+			pstm1.setLong(5, insc.getIdFormaDePago());
 			
 			if(pstm1.executeUpdate() != 1){
 				throw new RuntimeException("Error al generar inscripcion");
@@ -33,7 +34,7 @@ public class InscripcionDao {
 			ResultSet rs = pstm2.executeQuery();
 			
 			if(rs.next()){
-				id = rs.getLong(0);
+				id = rs.getLong(1);
 			}else{
 				throw new RuntimeException("Error al generar inscripcion");
 			}

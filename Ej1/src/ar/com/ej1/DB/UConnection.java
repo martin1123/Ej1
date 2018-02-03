@@ -23,10 +23,13 @@ public class UConnection {
 				url = rb.getString("url");
 				pwd = rb.getString("pwd");
 				usr = rb.getString("usr");
+			}else{
+				return con;
 			}
 
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, usr, pwd);
+			DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+		    con = DriverManager.getConnection
+		          ("jdbc:oracle:thin:@localhost:1521:xe", usr, pwd);
 			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
